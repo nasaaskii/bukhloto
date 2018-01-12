@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+		<record id="view_event_form_inherit_loto" model="ir.ui.view">
+            <field name="name">event.form.inherit.loto</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <page name="event_mail_schedule" position="after">
+                    <page string="Wrestlers">
+                        <field name="wrestler_m2m_ids"/>
+                        <field name="wrestler_ids">
+                            <tree string="Wrestlers">
+                                <field name="wrestler_id"/>
+                            </tree>
+                            <form string="Wrestlers">
+                            	<field name="wrestler_id"/>
+                            </form>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+        
+        <record id="view_event_registration_form_inherit_lotto" model="ir.ui.view">
+            <field name="name">event.registration.form.inherit.lotto</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event.view_event_registration_form"/>
+            <field name="arch" type="xml">
+            	<field name="email" position="before">
+            		<field name="registerno"/>
+            	</field>
+            	 <group name="event" position="after">
+                    <group colspan="4">
+		                	<notebook>
+			                    <page string="Lotto">
+			                        <field name="user_lotto_ids">
+			                            <tree string="Lotto">
+			                            	<field name="point_index"/>
+			                                <field name="wrestler_id"/>
+			                                <field name="total_score"/>
+			                            </tree>
+			                            <form string="Lotto">
+		                            		<group>
+				                            	<field name="point_index"/>
+				                            	<field name="wrestler_id"/>
+			                            	</group>
+			                            	<group>
+				                            	<group>
+				                            		<field name="step_1"/>
+					                                <field name="step_2"/>
+					                                <field name="step_3"/>
+					                                <field name="step_4"/>
+					                                <field name="step_5"/>
+					                                <field name="step_6"/>
+					                                <field name="step_7"/>
+					                                <field name="step_8"/>
+					                                <field name="step_9"/>
+					                                <field name="step_10"/>
+				                                </group>
+			                            	</group>
+			                            	<group class="oe_subtotal_footer oe_right">
+			                                    <field name="total_score"/>
+			                                </group>
+			                            </form>
+			                        </field>
+			                    </page>
+		                    </notebook>
+	                   </group>
+                   </group>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,656 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* bukh_loto
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-11 15:50+0000\n"
+"PO-Revision-Date: 2018-01-11 15:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "(Free)"
+msgstr "(Үнэгүй)"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "1-н даваа"
+msgstr "1-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "2-н даваа"
+msgstr "2-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "3-н даваа"
+msgstr "3-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "4-н даваа"
+msgstr "4-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "5-н даваа"
+msgstr "5-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "6-н даваа"
+msgstr "6-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "7-н даваа"
+msgstr "7-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "8-н даваа"
+msgstr "8-н даваа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "<i>to</i>"
+msgstr "<i>to</i>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>\n"
+"			        Choose Wrestlers:\n"
+"			    </strong>"
+msgstr "<strong>\n"
+"			        Бөх сонгох:\n"
+"			    </strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>1 оноо</strong>"
+msgstr "<strong>1 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>2 оноо</strong>"
+msgstr "<strong>2 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>3 оноо</strong>"
+msgstr "<strong>3 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>4 оноо</strong>"
+msgstr "<strong>4 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>5 оноо</strong>"
+msgstr "<strong>5 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>6 оноо</strong>"
+msgstr "<strong>6 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>7 оноо</strong>"
+msgstr "<strong>7 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.choose_wrestler
+msgid "<strong>8 оноо</strong>"
+msgstr "<strong>8 оноо</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "<strong>Email</strong>"
+msgstr "<strong>Имэйл</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "<strong>Name</strong>"
+msgstr "<strong>Нэр</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "<strong>Phone</strong>"
+msgstr "<strong>Утас</strong>"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "<strong>Register No</strong>"
+msgstr "<strong>Регистер</strong>"
+
+#. module: bukh_loto
+#: selection:wrestler.rank,static_rank:0
+msgid "Arslan"
+msgstr "Арслан"
+
+#. module: bukh_loto
+#: model:ir.model,name:bukh_loto.model_event_registration
+msgid "Attendee"
+msgstr "Бүртгэл"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "Attendee #%s"
+msgstr "Бүртгэл #%s"
+
+#. module: bukh_loto
+#: selection:wrestler.rank,static_rank:0
+msgid "Avarga"
+msgstr "Аварга"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_form
+msgid "Back from Injury"
+msgstr "Бэртлээс буцах"
+
+#. module: bukh_loto
+#: model:ir.ui.menu,name:bukh_loto.bukh_loto
+msgid "Bukh Lotto"
+msgstr "Үндэсний бөхийн лото"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "Check lotto"
+msgstr "Лото шалгах"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_complete_name
+msgid "Complete name"
+msgstr "Нэр"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_form
+msgid "Confirm"
+msgstr "Батлах"
+
+#. module: bukh_loto
+#: selection:wrestler.wrestler,state:0
+msgid "Confirmed"
+msgstr "Батлагдсан"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_create_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_create_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_create_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_create_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_create_uid
+msgid "Created by"
+msgstr "Үүсгэгч"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_create_date
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_create_date
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_create_date
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_create_date
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_create_date
+msgid "Created on"
+msgstr "Үүсгэгдсэн"
+
+#. module: bukh_loto
+#: selection:wrestler.wrestler,status:0
+msgid "Damaged"
+msgstr "Бэртсэн"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_date_of_birth
+msgid "Date Of Birth"
+msgstr "Төрсөн огноо"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_display_name
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_display_name
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_display_name
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_display_name
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_display_name
+msgid "Display Name"
+msgstr "Дэлгэцийн Нэр"
+
+#. module: bukh_loto
+#: selection:wrestler.wrestler,state:0
+msgid "Draft"
+msgstr "Ноорог"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "E-mail"
+msgstr "Имэйл"
+
+#. module: bukh_loto
+#: model:ir.model,name:bukh_loto.model_event_event
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_event_id
+msgid "Event"
+msgstr "Барилдаан"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Event Details"
+msgstr "Барилдааны дэлгэрэнгүй"
+
+#. module: bukh_loto
+#: model:ir.model,name:bukh_loto.model_event_wrestler
+msgid "Event Wrestler"
+msgstr "Бөх"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_event_registration_id
+msgid "Event registration"
+msgstr "Хэрэглэгчийн таавар"
+
+#. module: bukh_loto
+#: selection:wrestler.rank,static_rank:0
+msgid "Garid"
+msgstr "Гарьд"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_ground_id
+msgid "Ground"
+msgstr "Дэвжээ"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_filter
+msgid "Group By"
+msgstr "Бүлэглэх"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_height
+msgid "Height"
+msgstr "Өндөр"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_id
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_id
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_id
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_id
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_id
+msgid "ID"
+msgstr "ID"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_is_template
+msgid "Is Template"
+msgstr "Загвар эсэх?"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_form
+msgid "Juve"
+msgstr "Juve"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler___last_update
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto___last_update
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground___last_update
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank___last_update
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler___last_update
+msgid "Last Modified on"
+msgstr "Сүүлд Өөрчлөгдсөн"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_last_name
+msgid "Last Name"
+msgstr "Овог"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_write_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_write_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_write_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_write_uid
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_write_uid
+msgid "Last Updated by"
+msgstr "Сүүлд Шинэчлэгч"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_write_date
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_write_date
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_write_date
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_write_date
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_write_date
+msgid "Last Updated on"
+msgstr "Сүүлд Шинэчлэгдсэн"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.view_event_registration_form_inherit_lotto
+msgid "Lotto"
+msgstr "Лото"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_image_medium
+msgid "Medium-sized photo"
+msgstr "Дунд хэмжээтэй зураг"
+
+#. module: bukh_loto
+#: model:ir.model.fields,help:bukh_loto.field_wrestler_wrestler_image_medium
+msgid "Medium-sized photo of the employee. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Medium-sized photo of the employee. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "N/A"
+msgstr "N/A"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_name
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_name
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_name
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_ground_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_rank_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_filter
+msgid "Name"
+msgstr "Нэр"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "No lottos defined."
+msgstr "Лото олдсонгүй."
+
+#. module: bukh_loto
+#: selection:wrestler.rank,static_rank:0
+msgid "Other"
+msgstr "Бусад"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Phone"
+msgstr "Утас"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_image
+msgid "Photo"
+msgstr "Зураг"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_place_of_birth
+msgid "Place Of Birth"
+msgstr "Төрсөн газар"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_point_index
+msgid "Point"
+msgstr "Оноо"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_rank_id
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_rank_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_filter
+msgid "Rank"
+msgstr "Цол"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_rank_rate
+msgid "Rank Rate"
+msgstr "Цолны үзүүлэлт"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_rate
+msgid "Rate"
+msgstr "Үзүүлэлт"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Reference"
+msgstr "Дугаар"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_registration_registerno
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Register No"
+msgstr "Регистер"
+
+#. module: bukh_loto
+#: selection:wrestler.wrestler,status:0
+msgid "Retired"
+msgstr "Retired"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_form
+msgid "Set to Draft"
+msgstr "Ноороглох"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_image_small
+msgid "Small-sized photo"
+msgstr "Жижиг хэмжээтэй зураг"
+
+#. module: bukh_loto
+#: model:ir.model.fields,help:bukh_loto.field_wrestler_wrestler_image_small
+msgid "Small-sized photo of the employee. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Small-sized photo of the employee. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_state
+msgid "State"
+msgstr "Төлөв"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_static_rank
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_static_rank
+msgid "Static rank"
+msgstr "Статик цол"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_status
+msgid "Status"
+msgstr "Төлөв"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_1
+msgid "Step 1"
+msgstr "1-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_10
+msgid "Step 10"
+msgstr "10-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_2
+msgid "Step 2"
+msgstr "2-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_3
+msgid "Step 3"
+msgstr "3-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_4
+msgid "Step 4"
+msgstr "4-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_5
+msgid "Step 5"
+msgstr "5-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_6
+msgid "Step 6"
+msgstr "6-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_7
+msgid "Step 7"
+msgstr "7-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_8
+msgid "Step 8"
+msgstr "8-н даваа"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_step_9
+msgid "Step 9"
+msgstr "9-н даваа"
+
+#. module: bukh_loto
+#: code:addons/bukh_loto/models/bukhloto.py:60
+#, python-format
+msgid "The Ground already exists !"
+msgstr "Дэвжээ аль хэдийн бүртгэгдсэн байна!"
+
+#. module: bukh_loto
+#: code:addons/bukh_loto/models/bukhloto.py:42
+#, python-format
+msgid "The Rate rank already exists !"
+msgstr "Цол аль хэдийн бүртгэгдсэн байна !"
+
+#. module: bukh_loto
+#: model:ir.model.fields,help:bukh_loto.field_wrestler_wrestler_image
+msgid "This field holds the image used as photo for the employee, limited to 1024x1024px."
+msgstr "This field holds the image used as photo for the employee, limited to 1024x1024px."
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "Ticket Type :"
+msgstr "Төрөл :"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_total_score
+msgid "Total Score"
+msgstr "Нийт оноо"
+
+#. module: bukh_loto
+#: model:ir.model,name:bukh_loto.model_user_lotto
+msgid "User Lotto"
+msgstr "Хэрэглэгчийн лото"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_registration_user_lotto_ids
+msgid "User lotto"
+msgstr "Хэрэглэгчийн лото"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "We are glad to confirm your registration to our event"
+msgstr "Манай лотонд бүртгүүлсэн танид баярлалаа."
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_wrestler_weight
+msgid "Weight"
+msgstr "Жин"
+
+#. module: bukh_loto
+#: model:ir.actions.act_window,name:bukh_loto.open_wrestler_wrestler_filter
+#: model:ir.model,name:bukh_loto.model_wrestler_wrestler
+#: model:ir.model.fields,field_description:bukh_loto.field_event_event_wrestler_ids
+#: model:ir.model.fields,field_description:bukh_loto.field_event_wrestler_wrestler_id
+#: model:ir.model.fields,field_description:bukh_loto.field_user_lotto_wrestler_id
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_ground_wrestler_ids
+#: model:ir.model.fields,field_description:bukh_loto.field_wrestler_rank_wrestler_ids
+#: model:ir.ui.menu,name:bukh_loto.menuitem_wrestler_wrestler
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_form
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_wrestler_tree
+msgid "Wrestler"
+msgstr "Бөх"
+
+#. module: bukh_loto
+#: model:ir.actions.act_window,name:bukh_loto.open_wrestler_rank_filter
+#: model:ir.model,name:bukh_loto.model_wrestler_rank
+#: model:ir.ui.menu,name:bukh_loto.menu_open_wrestler_rank_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_rank_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_rank_form
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_rank_tree
+msgid "Wrestler Rank"
+msgstr "Цол"
+
+#. module: bukh_loto
+#: model:ir.actions.act_window,name:bukh_loto.open_wrestler_ground_filter
+#: model:ir.model,name:bukh_loto.model_wrestler_ground
+#: model:ir.ui.menu,name:bukh_loto.menu_open_bukh_ground_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_ground_filter
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_ground_form
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_ground_tree
+msgid "Wrestler ground"
+msgstr "Дэвжээ"
+
+#. module: bukh_loto
+#: model:ir.model.fields,field_description:bukh_loto.field_event_event_wrestler_m2m_ids
+#: model:ir.ui.view,arch_db:bukh_loto.view_event_form_inherit_loto
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_ground_form
+#: model:ir.ui.view,arch_db:bukh_loto.wrestler_rank_form
+msgid "Wrestlers"
+msgstr "Бөх"
+
+#. module: bukh_loto
+#: selection:wrestler.wrestler,status:0
+msgid "Wrestling"
+msgstr "Барилдаж байгаа"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Your Choose Wrestler"
+msgstr "Таны сонгосон бөх"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Your registration"
+msgstr "Таны бүртгэл"
+
+#. module: bukh_loto
+#: selection:wrestler.rank,static_rank:0
+msgid "Zaan"
+msgstr "Заан"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.event_description_full_loto
+msgid "Барилдах бөхчүүд"
+msgstr "Барилдах бөхчүүд"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "Заавал бөглөнө"
+msgstr "Заавал бөглөнө"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_attendee_details_loto
+msgid "Заавал бөглөх албагүй..."
+msgstr "Заавал бөглөх албагүй..."
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "Нийт оноо"
+msgstr "Нийт оноо"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "Нийт:"
+msgstr "Нийт:"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "Нэр"
+msgstr "Нэр"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Овог"
+msgstr "Овог"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+#: model:ir.ui.view,arch_db:bukh_loto.website_check_lotto
+msgid "Оноо"
+msgstr "Оноо"
+
+#. module: bukh_loto
+#: model:ir.ui.view,arch_db:bukh_loto.registration_complete_loto
+msgid "Цол"
+msgstr "Цол"

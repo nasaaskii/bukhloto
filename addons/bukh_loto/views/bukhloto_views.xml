@@ -1,0 +1,330 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+		<menuitem
+            id="bukh_loto"
+            sequence="1"
+            name="Bukh Lotto"
+           />
+         <!-- Wrestler -->
+         <record id="wrestler_wrestler_form" model="ir.ui.view">
+            <field name="name">wrestler.wrestler.form</field>
+            <field name="model">wrestler.wrestler</field>
+            <field name="arch" type="xml">
+                <form string="Wrestler">
+                	<header>
+                   		<button name="action_confirm" class="btn-primary" states="draft" string="Confirm" type="object"/>
+                		<button name="action_open" class="btn-primary" states="confirmed" string="Set to Draft" type="object"/>
+                		<button name="action_back_injury" attrs="{'invisible':[('status','!=','damaged')]}" class="btn-primary" string="Back from Injury" type="object"/>
+               			<button name="action_juve" attrs="{'invisible':[('status','=','retired')]}" class="btn-primary" string="Juve" type="object"/>
+               			<field name="state" widget="statusbar"/>
+                	</header>
+                    <sheet>
+                    	<field name="image" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
+                    	<div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                            <field name="status"/>
+                        </div>
+                        <group col="4">
+                            <field name="last_name"/>
+                            <field name="ground_id"/>
+                            <field name="rank_id"/>
+                            <field name="rank_rate"/>
+                            <field name="date_of_birth"/>
+                            <field name="place_of_birth"/>
+                            <field name="height"/>
+                            <field name="weight"/>
+                            <field name="static_rank"/>
+                            <field name="is_template"/>
+                        </group>
+                       <!-- <notebook>
+                        	 <page string="Result Wrestling">
+                        		<field name="wrestling_ids">
+                        			<tree string="Result Wrestling">
+                        				<field name="wrestling_id"/>
+                        				<field name="win_count"/>
+                        				<field name="is_champion"/>
+                        				<field name="is_rest_round_four"/>
+                        				<field name="is_rest_round_two"/>
+                        				<field name="is_lost"/>
+                        			</tree>
+                        			<form string="Result Wrestling">
+                        				<group>
+                        					<field name="wrestling_id"/>
+                        					<field name="wrestler_id"/>
+                        				</group>
+                        				<group>
+	                        				<field name="win_count"/>
+                        				</group>	
+                        				<notebook>
+                        					<page string="Result line">
+                        						<field name="line_ids">
+                        							<tree string="Result line">
+                        								<field name="level"/>
+                        								<field name="result_type"/>
+                        								<field name="rival_wrestler_id"/>
+                        								<field name="rival_wrestler_rank_id"/>
+                        								<field name="tehnic"/>
+                        								<field name="point"/>
+                        							</tree>
+                        						</field>
+                        					</page>
+                        				</notebook>
+                        			</form>
+                        		</field>
+                        	</page>
+                        </notebook> -->
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="wrestler_wrestler_tree" model="ir.ui.view">
+            <field name="name">wrestler.wrestler.tree</field>
+            <field name="model">wrestler.wrestler</field>
+            <field name="arch" type="xml">
+                <tree string="Wrestler">
+                    <field name="name"/>
+                    <field name="last_name"/>
+                    <field name="ground_id"/>
+                    <field name="rank_id"/>
+                    <field name="status"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="wrestler_kanban_view" model="ir.ui.view">
+	        <field name="name">wrestler.wrestler.kanban</field>
+	        <field name="model">wrestler.wrestler</field>
+	        <field name="priority">10</field>
+	        <field name="arch" type="xml">
+	            <kanban class="o_hr_employee_kanban">
+	                <field name="message_is_follower"/>
+	                <field name="message_follower_ids"/>
+	                <field name="message_ids"/>
+	                <field name="message_needaction_counter"/>
+	               		<templates>
+		                    <t t-name="kanban-box">
+			                    <div class="oe_kanban_global_click">
+			                        <div class="o_kanban_image">
+			                            <img t-att-src="kanban_image('wrestler.wrestler', 'image_medium', record.id)"/>
+			                        </div>
+			                        <div class="oe_kanban_details">
+			                            <strong>
+			                                <field name="name"/>
+			                                <field name="last_name"/>
+			                            </strong>
+			                            <ul>
+			                                <li t-if="record.rank_id.raw_value"><field name="rank_id"/></li>
+			                                <li t-if="record.ground_id.raw_value"><field name="ground_id"/></li>
+			                            </ul>
+			                        </div>
+			                    </div>
+		                    </t>
+	                	</templates>
+	            	</kanban>
+		        </field>
+		    </record>
+    
+        <record id="wrestler_wrestler_filter" model="ir.ui.view">
+            <field name="name">Wrestler</field>
+            <field name="model">wrestler.wrestler</field>
+            <field name="arch" type="xml">
+                <search string="Wrestler">
+                    <field name="name" string="Name"/>
+                    <field name="rank_id" string="Rank"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Rank" name="rank" context="{'group_by':'rank_id'}"/>
+                    </group>
+                </search>
+             </field>
+        </record>
+        <record id="open_wrestler_wrestler_filter" model="ir.actions.act_window">
+            <field name="name">Wrestler</field>
+            <field name="res_model">wrestler.wrestler</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="wrestler_wrestler_filter"/>
+            <field name="context">{'search_default_rank': 1}</field>
+        </record>
+         
+         <menuitem
+            id="menuitem_wrestler_wrestler"
+            parent="bukh_loto"
+            sequence="1"
+            action="open_wrestler_wrestler_filter"
+            name="Wrestler"
+            />
+            
+         
+         <!-- Бөхийн цол -->
+         <record id="wrestler_rank_form" model="ir.ui.view">
+            <field name="name">wrestler.rank.form</field>
+            <field name="model">wrestler.rank</field>
+            <field name="arch" type="xml">
+                <form string="Wrestler Rank">
+                   <!-- 	<header>
+                   		<button name="action_confirm" class="btn-primary" states="draft" string="Confirm" type="object"/>
+                		<button name="action_open" class="btn-primary" states="confirmed" string="Open" type="object"/>
+               			<field name="state" widget="statusbar"/>
+               		</header> -->
+                    <sheet>
+                    	<div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group col="4">
+                            <field name="static_rank"/>
+                            <field name="rate"/>
+                        </group>
+                        <notebook>
+                        	<page string="Wrestlers">
+                        		<field name="wrestler_ids" nolabel="1">
+                        			<tree>
+					                    <field name="name"/>
+					                    <field name="last_name"/>
+					                    <field name="ground_id"/>
+					                    <field name="rank_id"/>
+					                    <field name="status"/>
+					                    <field name="state"/>
+                        			</tree>
+                        			<form>
+            				             <field name="name"/>
+					                    <field name="last_name"/>
+					                    <field name="ground_id"/>
+					                    <field name="rank_id"/>
+					                    <field name="status"/>
+					                    <field name="state"/>
+                        			</form>
+                        		</field>
+                        	</page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+ 
+        <record id="wrestler_rank_tree" model="ir.ui.view">
+            <field name="name">wrestler.rank.tree</field>
+            <field name="model">wrestler.rank</field>
+            <field name="arch" type="xml">
+                <tree string="Wrestler Rank">
+                    <field name="name"/>
+                    <field name="static_rank"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wrestler_rank_filter" model="ir.ui.view">
+            <field name="name">Wrestler Rank</field>
+            <field name="model">wrestler.rank</field>
+            <field name="arch" type="xml">
+                <search string="Wrestler Rank">
+                    <field name="name" string="Name"/>
+                    <field name="static_rank" string="Rank"/>
+                </search>
+             </field>
+        </record>
+        <record id="open_wrestler_rank_filter" model="ir.actions.act_window">
+            <field name="name">Wrestler Rank</field>
+            <field name="res_model">wrestler.rank</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="wrestler_rank_filter"/>
+        </record>
+		
+        <menuitem
+            action="open_wrestler_rank_filter"
+            id="menu_open_wrestler_rank_filter"
+            parent="bukh_loto"
+            sequence="2"
+            />
+        
+        <!-- Бөхийн дэвжээ -->
+        <record id="wrestler_ground_form" model="ir.ui.view">
+            <field name="name">wrestler.ground.form</field>
+            <field name="model">wrestler.ground</field>
+            <field name="arch" type="xml">
+                <form string="Wrestler ground">
+                    <sheet>
+                    	<div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <notebook>
+                        	<page string="Wrestlers">
+                        		<field name="wrestler_ids" nolabel="1">
+                        			<tree>
+                        				<field name="name"/>
+					                    <field name="last_name"/>
+					                    <field name="ground_id"/>
+					                    <field name="rank_id"/>
+					                    <field name="status"/>
+					                    <field name="state"/>
+                        			</tree>
+                        			<form>
+                        				<field name="name"/>
+					                    <field name="last_name"/>
+					                    <field name="ground_id"/>
+					                    <field name="rank_id"/>
+					                    <field name="status"/>
+					                    <field name="state"/>
+                        			</form>
+                        		</field>
+                        	</page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="wrestler_ground_tree" model="ir.ui.view">
+            <field name="name">wrestler.ground.tree</field>
+            <field name="model">wrestler.ground</field>
+            <field name="arch" type="xml">
+                <tree string="Wrestler ground">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wrestler_ground_filter" model="ir.ui.view">
+            <field name="name">Wrestler ground</field>
+            <field name="model">wrestler.ground</field>
+            <field name="arch" type="xml">
+                <search string="Wrestler ground">
+                    <field name="name" string="Name"/>
+                </search>
+             </field>
+        </record>
+        <record id="open_wrestler_ground_filter" model="ir.actions.act_window">
+            <field name="name">Wrestler ground</field>
+            <field name="res_model">wrestler.ground</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="wrestler_ground_filter"/>
+        </record>
+		
+        <menuitem
+            action="open_wrestler_ground_filter"
+            id="menu_open_bukh_ground_filter"
+            parent="bukh_loto"
+            sequence="3"
+            />
+            
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wrestler_rank_all,wrestler.rank.all,model_wrestler_rank,,1,1,1,0
+access_wrestler_ground_all,wrestler.ground.all,model_wrestler_ground,,1,1,1,0
+access_wrestler_wrestler_all,wrestler.wrestler.all,model_wrestler_wrestler,,1,1,1,1
+access_user_lotto_all,user.lotto.all,model_user_lotto,,1,1,1,0
+
+access_wrestler_rank_manager,wrestler.rank.manager,model_wrestler_rank,event.group_event_manager,1,1,1,1
+access_wrestler_ground_manager,wrestler.ground.manager,model_wrestler_ground,event.group_event_manager,1,1,1,1
+access_wrestler_wrestler_manager,wrestler.wrestler.manager,model_wrestler_wrestler,event.group_event_manager,1,1,1,1
+access_user_lotto_manager,user.lotto.manager,model_user_lotto,event.group_event_manager,1,1,1,1

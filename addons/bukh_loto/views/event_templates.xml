@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="choose_wrestler" name="Choose wrestler template">
+			<h4 class="page-header mt16">
+			    <strong>
+			        Choose Wrestlers:
+			    </strong>
+			</h4>
+            <div class="row">
+                <div class="col-md-3"><strong>8 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-8" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>7 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-7" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>6 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-6" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>5 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-5" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>4 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-4" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>3 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-3" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>2 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-2" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"><strong>1 оноо</strong></div>
+                <div class="col-md-9">
+                	<select name="wrestler-1" class="form-control">
+         				<t t-foreach="event.wrestler_ids" t-as="wr">
+		                      <option t-att-value="wr.wrestler_id.id" t-att-selected="wr.wrestler_id.is_template == true">
+								<t t-esc="wr.wrestler_id.complete_name"/>
+							</option>
+		                </t>
+         			</select>
+                </div>
+            </div>
+</template>
+
+<template id="registration_attendee_details_loto" inherit_id="website_event.registration_attendee_details" name="Registration Attendee Details with questions">
+    <data>
+    	<xpath expr="//div[hasclass('container')]" position="replace">
+    		<div class="container">
+                  <t t-set="counter_type" t-value="1"/>
+                  <t t-set="counter" t-value="0"/>
+                  <t t-foreach="tickets" t-as="ticket">
+                      <h4 class="page-header mt16">
+                          <strong>
+                              Ticket Type :<t t-esc="ticket['name']"/>
+                              <t t-if="ticket['price'] == 0">(Free)</t>
+                          </strong>
+                      </h4>
+                      <div class="row">
+                          <div class="col-md-6"><strong>Name</strong></div>
+                          <div class="col-md-6"><strong>Register No</strong></div>
+                      </div>
+                      <div class="row mb4">
+                              <t t-set="attendee_placeholder">Attendee #%s</t>
+                              <div class="col-md-6"><input class='form-control' type='text' t-attf-name="#{counter}-name" required="This field is required" placeholder="Заавал бөглөнө"/></div>
+                              <div class="col-md-6"><input class='form-control' type='text' t-attf-name="#{counter}-registerno" required="This field is required" placeholder="Заавал бөглөнө"/></div>
+                     </div>
+                      <div class="row">
+                          <div class="col-md-6"><strong>Phone</strong></div>
+                          <div class="col-md-6"><strong>Email</strong></div>
+                      </div>
+                     <div class="row mb4">
+                              <div class="col-md-6"><input class='form-control' type='tel' t-attf-name="#{counter}-phone" required="This field is required" placeholder="Заавал бөглөнө"/></div>
+                              <div class="col-md-6"><input class='form-control' type='email' t-attf-name="#{counter}-email" placeholder="Заавал бөглөх албагүй..."/></div>
+                              <input class='hidden' type='text' t-attf-name="#{counter}-ticket_id" t-attf-value="#{ticket['id']}"/>
+                      </div>
+                      <!-- <t t-foreach="range(1, ticket['quantity'] + 1)" t-as="att_counter" name="attendee_loop">
+                          <t t-set="counter" t-value="counter + 1"/>
+                          <div class="row mb4">
+                              <t t-set="attendee_placeholder">Attendee #%s</t>
+                              <div class="col-md-4"><input class='form-control' type='text' t-attf-name="#{counter}-name" required="This field is required" t-att-placeholder="attendee_placeholder %counter"/></div>
+                              <div class="col-md-4"><input class='form-control' type='email' t-attf-name="#{counter}-email" required="This field is required"/></div>
+                              <div class="col-md-3"><input class='form-control' type='tel' t-attf-name="#{counter}-phone"/></div>
+                              <input class='hidden' type='text' t-attf-name="#{counter}-ticket_id" t-attf-value="#{ticket['id']}"/>
+                          </div>
+                      </t>
+                      <t t-set="counter_type" t-value="counter_type + 1"/> -->
+                  </t>
+              </div>
+              <div class="container">
+              	<t t-id="choose_wr" t-call="bukh_loto.choose_wrestler"/>
+              </div>
+    	</xpath>
+    </data>
+</template>
+
+<template id="registration_complete_loto" inherit_id="website_event.registration_complete" name="Registration Completed">
+	<data>
+		<xpath expr="//div[hasclass('container')]" position="replace">
+			<div class="container">
+	            <h3>We are glad to confirm your registration to our event</h3>
+	            <div class="row">
+	                <div class="col-md-3 mt16">
+	                    <h4>Event Details</h4>
+	                </div>
+	                <div class="col-md-9 mt16">
+	                    <h4><a t-attf-href="/event/#{slug(event)}"><t t-esc="event.name"/></a></h4>
+	                    <i class="fa fa-clock-o"></i> <span itemprop="startDate" t-esc="event.date_begin_located"> </span> <i>to</i> <span itemprop="endDate" t-esc="event.date_end_located"> </span>
+	                    <div itemprop="location" class="mt16 mb8" t-field="event.address_id" t-options='{
+	                            "widget": "contact",
+	                            "fields": ["name", "address", "phone", "mobile", "email"]
+	                            }'/>
+	                </div>
+	                <div class="col-md-3 mt16">
+	                    <h4>Your registration</h4>
+	                </div>
+	                <div class="col-md-9 mt16">
+	                    <table class='table table-bordered table-striped'>
+	                        <thead>
+	                            <tr>
+	                                <th>Reference</th>
+	                                <th>Name</th>
+	                                <th>Register No</th>
+	                                <th>E-mail</th>
+	                                <th>Phone</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <t t-foreach="attendees" t-as="attendee">
+	                                <tr>
+	                                    <td><t t-esc="attendee.id"/></td>
+	                                    <td><i class="fa fa-user"></i> <t t-if='attendee.name'><t t-esc="attendee.name"/></t><t t-if='not attendee.name'>N/A</t></td>
+	                                    <td><i class="fa fa-registerno"></i> <t t-if='attendee.registerno'><t t-esc="attendee.registerno"/></t><t t-if='not attendee.registerno'>N/A</t></td>
+	                                    <td><i class="fa fa-envelope"></i> <t t-if='attendee.email'><t t-esc="attendee.email"/></t><t t-if='not attendee.email'>N/A</t></td>
+	                                    <td><i class="fa fa-phone"></i> <t t-if='attendee.phone'><t t-esc="attendee.phone"/></t><t t-if='not attendee.phone'>N/A</t></td>
+	                                </tr>
+	                            </t>
+	                        </tbody>
+	                    </table>
+	                </div>
+	                
+	                <div class="col-md-3 mt16">
+	                   <h4>Your Choose Wrestler</h4>
+	             	</div>
+             		<div class="col-md-9 mt16">
+	                    <table class='table table-bordered table-striped'>
+	                        <thead>
+	                            <tr>
+	                                <th>Оноо</th>
+	                                <th>Цол</th>
+	                                <th>Нэр</th>
+	                                <th>Овог</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <t t-foreach="attendees" t-as="attendee">
+	                            	<t t-foreach="attendee.user_lotto_ids" t-as="userloto">
+		                                <tr>
+		                                    <td><t t-esc="userloto.point_index"/></td>
+		                                    <td><t t-esc="userloto.wrestler_id.rank_id.name"/></td>
+		                                    <td><t t-esc="userloto.wrestler_id.name"/></td>
+		                                    <td><t t-esc="userloto.wrestler_id.last_name"/></td>
+		                                </tr>
+		                           </t>
+	                            </t>
+	                        </tbody>
+	                    </table>
+	                </div>
+	            </div>
+	        </div>
+		</xpath>
+    </data>
+</template>
+
+<template id="event_description_full_loto" inherit_id="website_event.event_description_full">
+	<data>
+        <xpath expr="//div[contains(@class, 'col-md-8')]" position="inside">
+        		<section class="container" id="team">
+		            <div class="col-sm-12 text-center" t-if="len(event.wrestler_ids)">
+		                <h2>Барилдах бөхчүүд</h2>
+		            </div>
+		            <div t-foreach="event.wrestler_ids" t-as="wr" class="col-sm-3 col-lg-2 mt16 text-center o_avatar_info_container">
+		            	<t t-if="wr.wrestler_id.is_template == false">
+			                <div class="clearfix"/>
+			                <img t-att-src="website.image_url(wr.wrestler_id, 'image_small')" class="img shadow img-rounded"/>
+			                <div class="mt8">
+			                    <strong t-field="wr.wrestler_id.name"></strong>
+			                    <strong t-field="wr.wrestler_id.last_name"></strong>
+			                </div>
+			                <div t-field="wr.wrestler_id.rank_id"/>
+		                </t>
+		            </div>
+		        </section>
+        </xpath>
+    </data>
+</template>
+
+
+
+
+</odoo>

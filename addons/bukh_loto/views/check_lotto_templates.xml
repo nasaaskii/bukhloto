@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="website_check_lotto" name="Check lotto">
+    <t t-call="website.layout">
+        <t t-set="additional_title">Check lotto</t>
+        <div id="wrap" class="js_sale">
+            <div class="oe_structure" />
+            <div class="container oe_website_sale">
+                <div class="products_pager">
+                    <div class="row" style="width: 100%;">
+                        <t t-call="bukh_loto.search_user_lotto">
+                            <t t-set="search_class" t-value="'pagination form-inline o_website_sale_search'"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="hidden" id="products_grid_before"></div>
+                    <div class="col-md-12" id="products_grid">
+	                     <t t-if="lottos">
+	                     	<t t-foreach="lottos" t-as="lotto">
+		                     	<div class="row">
+		                          <div class="col-md-3"><strong>Нэр: </strong><span><t t-esc="lotto.name"/></span></div>
+		                          <div class="col-md-3"><strong>Регистер: </strong><span><t t-esc="lotto.registerno"/></span></div>
+		                          <div class="col-md-3"><strong>Утас: </strong><span><t t-esc="lotto.phone"/></span></div>
+		                          <div class="col-md-3"><strong>Барилдаан: </strong><span><t t-esc="lotto.event_id.name"/></span></div>
+		                  	    </div>
+			                    <table class='table table-bordered table-striped' width="100%">
+			                        <thead>
+			                            <tr>
+			                                <th align="center">Оноо</th>
+			                                <th align="center" width="30%">Нэр</th>
+			                                <th align="center">1-н даваа</th>
+			                                <th align="center">2-н даваа</th>
+			                                <th align="center">3-н даваа</th>
+			                                <th align="center">4-н даваа</th>
+			                                <th align="center">5-н даваа</th>
+			                                <th align="center">6-н даваа</th>
+			                                <th align="center">7-н даваа</th>
+			                                <th align="center">8-н даваа</th>
+			                                <th align="center">Нийт оноо</th>
+			                            </tr>
+			                        </thead>
+			                        <tbody>
+			                        	<t t-set="total_score" t-value="0"/>
+			                            
+			                            	<t t-foreach="lotto.user_lotto_ids" t-as="userloto">
+				                                <tr>
+				                                    <td><t t-esc="userloto.point_index"/></td>
+				                                    <td><t t-esc="userloto.wrestler_id.complete_name"/></td>
+				                                    <td><t t-esc="userloto.step_1"/></td>
+				                                    <td><t t-esc="userloto.step_2"/></td>
+				                                    <td><t t-esc="userloto.step_3"/></td>
+				                                    <td><t t-esc="userloto.step_4"/></td>
+				                                    <td><t t-esc="userloto.step_5"/></td>
+				                                    <td><t t-esc="userloto.step_6"/></td>
+				                                    <td><t t-esc="userloto.step_7"/></td>
+				                                    <td><t t-esc="userloto.step_8"/></td>
+				                                    <td><t t-esc="userloto.total_score"/></td>
+				                                </tr>
+				                                <t t-set="total_score" t-value="total_score + userloto.total_score"/>
+				                           </t>
+			                            <tr>
+			                            	<td colspan="10" align="right"><b>Нийт:</b></td>
+			                            	<td><b><t t-esc="total_score"/></b></td>
+			                            </tr>
+			                            <tr>
+			                            	<td colspan="10" align="right"><b>Төлөв:</b></td>
+			                            	<td><b><t t-esc="lotto.state"/></b></td>
+			                            </tr>
+			                        </tbody>
+			                    </table>
+			                 </t>
+	                	</t>
+                        <t t-if="not lottos">
+                            <div class="text-center text-muted oe_product">
+                                <h3 class="css_editable_display">No lottos defined.</h3>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <div class="oe_structure mb32" />
+        </div>
+    </t>
+</template>
+
+    <template id="search_user_lotto" name="Search Box">
+        <form method="get" t-att-class="search_class"> <!-- t-att-action="keep('/checklotto'+ ('/lotto/'+slug(lotto)) if lotto else None, search=0)" -->
+            <t t-call="website.website_search_box" />
+        </form>
+    </template>
+    
+   <!-- 
+<template id="search_box_lotto" name="Website Searchbox Lotto">
+    <div class="input-group">
+        <div class="oe_search">
+            <input type="text" name="search" class="search-query form-control oe_search_box" placeholder="Search..." t-att-value="search" />
+        </div>
+        <span class="input-group-btn">
+           <button type="submit" class="btn btn-default oe_search_button"><i class="fa fa-search"/></button>
+        </span>
+    </div>
+</template>
+
+<template id="website_search_box_lotto" name="Search Box">
+	<h1>ЛОТО ШАЛГАХ</h1>
+    <form t-att-action="keep('/checklotto'+ ('/lotto/'+slug(lotto)) if lotto else None, search=0)" method="get" t-att-class="search_class">
+        <t t-if="attrib_values">
+            <t t-foreach="attrib_values" t-as="a">
+                <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])" />
+            </t>
+        </t>
+        <t t-call="bukh_loto.search_box_lotto" />
+    </form>
+</template>
+   
+<template id="search count lotto" inherit_id="bukh_loto.search_box_lotto" active="False" customize_show="True" name="Show # found">
+    <xpath expr="//button[hasclass('oe_search_button')]" position="inside">
+        <span t-if='search and search_count' class='oe_search_found'> <small>(<t t-esc="search_count"/> found)</small></span>
+    </xpath>
+</template>
+     --> 
+</odoo>
