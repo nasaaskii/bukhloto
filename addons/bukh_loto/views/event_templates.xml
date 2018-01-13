@@ -173,6 +173,32 @@
 	                            }'/>
 	                </div>
 	                <div class="col-md-3 mt16">
+	                	<h4>Лотог идэвхжүүлэх</h4>
+	                </div>
+	                <div class="col-md-9 mt16">
+	                    <table class='table table-bordered table-striped'>
+	                        <thead>
+	                            <tr>
+	                                <th>Банк</th>
+	                                <th>Данс эзэмшигч</th>
+	                                <th>Дансны дугаар</th>
+	                                <th>Гүйлгээний утга</th>
+	                                <th>Дүн</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+                                <tr>
+                                    <td>Хаан банк</td>
+                                    <td>Гранд Сумо ЭмЖиЭл ХХК</td>
+                                    <td>5009760535</td>
+                                    <td>Регистерийн дугаар бичнэ</td>
+                                    <td>5000 ₮</td>
+                                </tr>
+	                        </tbody>
+	                    </table>
+	                </div>
+	                
+	                <div class="col-md-3 mt16">
 	                    <h4>Your registration</h4>
 	                </div>
 	                <div class="col-md-9 mt16">
