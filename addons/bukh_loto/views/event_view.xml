@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <page name="event_mail_schedule" position="after">
                     <page string="Wrestlers">
+                    	<button name="create_history_wrestler" string="Create history" states="confirm" type="object" class="oe_highlight"/>
                         <field name="wrestler_m2m_ids"/>
                         <field name="wrestler_ids">
                             <tree string="Wrestlers">
@@ -64,6 +65,9 @@
 			                                </group>
 			                            </form>
 			                        </field>
+			                        <group>
+			                        	<field name="total_score"/>
+			                        </group>
 			                    </page>
 		                    </notebook>
 	                   </group>

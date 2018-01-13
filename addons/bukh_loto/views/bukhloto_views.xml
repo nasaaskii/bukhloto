@@ -38,7 +38,7 @@
                             <field name="static_rank"/>
                             <field name="is_template"/>
                         </group>
-                       <!-- <notebook>
+                        <notebook>
                         	 <page string="Result Wrestling">
                         		<field name="wrestling_ids">
                         			<tree string="Result Wrestling">
@@ -74,7 +74,7 @@
                         			</form>
                         		</field>
                         	</page>
-                        </notebook> -->
+                        </notebook>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
@@ -325,6 +325,98 @@
             parent="bukh_loto"
             sequence="3"
             />
+        
+        
+        <!-- Барилдааны үр дүн -->
+        
+        <record id="wrestling_result_form" model="ir.ui.view">
+            <field name="name">wrestling.result.form</field>
+            <field name="model">wrestling.result</field>
+            <field name="arch" type="xml">
+                <form string="Result">
+                	<header>
+                        <button name="action_confirm" string="Action Confirm" states="draft" type="object" class="oe_highlight"/>
+                		<field name="state" widget="statusbar"/>
+                	</header>
+                    <sheet>
+                    	<div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group col="4">
+                            <field name="wrestling_id" domain="[('state', '=', 'done')]"/>
+                            <field name="level"/>
+                            <field name="date"/>
+                            <field name="is_finish_level"/>
+                            <field name="is_rest_round_four"/>
+                            <field name="is_rest_round_two"/>
+                        </group>
+                        <notebook>
+                        	<page string="Line">
+                        		<button name="action_import_wrestler" string="Import Wrestlers" states="draft" type="object" class="oe_highlight"/>
+                        		<field name="line_ids"  nolabel="1" context="{'default_wrestling_id':wrestling_id}">
+                        			<tree editable="bottom">
+                        				<field name="wrestler_id"/>
+                        				<field name="wrestler_rank_id"/>
+                        				<field name="result_type"/>
+                        				<field name="tehnic"/>
+                        				<field name="rival_wrestler"/>
+                        				<field name="rival_wrestler_rank_id"/>
+                        				<field name="wrestling_id" invisible="1"/>
+                        			</tree>
+                        		</field>
+                       			<group><field name="champion_wrestler_id" attrs="{'invisible':[('is_finish_level','=',False)], 'required':[('is_finish_level','=',True)]}"/></group>
+                        	</page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="wrestling_result_tree" model="ir.ui.view">
+            <field name="name">wrestling.result.tree</field>
+            <field name="model">wrestling.result</field>
+            <field name="arch" type="xml">
+                <tree string="Result">
+                    <field name="name"/>
+                    <field name="level"/>
+                     <field name="date"/>
+                	<field name="wrestling_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wrestling_result_filter" model="ir.ui.view">
+            <field name="name">Result</field>
+            <field name="model">wrestling.result</field>
+            <field name="arch" type="xml">
+                <search string="Result">
+                    <field name="name" string="Name"/>
+                    <field name="level" string="Level"/>
+                </search>
+             </field>
+        </record>
+        <record id="open_wrestling_result_filter" model="ir.actions.act_window">
+            <field name="name">Result</field>
+            <field name="res_model">wrestling.result</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="wrestling_result_filter"/>
+        </record>
+		
+        <menuitem
+            action="open_wrestling_result_filter"
+            id="menu_open_wrestling_result_filter"
+            parent="bukh_loto"
+            sequence="5"
+            />
+            
+          
             
     </data>
 </odoo>

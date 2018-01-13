@@ -162,4 +162,266 @@ class WrestlerGround(models.Model):
     _inherit = 'wrestler.ground'
     wrestler_ids = fields.One2many('wrestler.wrestler', 'ground_id', string='Wrestler', readonly=True)
 
+
+class WrestlingResult(models.Model):
+    '''Барилдааны үр дүн
+    '''
+    _name = 'wrestling.result'
+    _description = 'Wrestling Result'
+    _inherit = ['mail.thread']
+    
+    STATE_SELECTION = [
+        ('draft','Draft'),
+        ('confirmed','Confirmed'),
+    ]
+    
+    LEVEL_SELECTION = [
+        ('1','1'),
+        ('2','2'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
+        ('6','6'),
+        ('7','7'),
+        ('8','8'),
+        ('9','9'),
+        ('10','10'),
+    ]
+    
+    name = fields.Char(string='Name', required=True, size=64, readonly=True, states={'draft': [('readonly', False)]})
+    level = fields.Selection(LEVEL_SELECTION, string='Level', required=True, default='1', readonly=True, states={'draft': [('readonly', False)]})
+    wrestling_id = fields.Many2one('event.event', string='Event', required=True, readonly=True, states={'draft': [('readonly', False)]})
+    state = fields.Selection(STATE_SELECTION, string='Status', required=True, default='draft', readonly=True)
+    date = fields.Date(string='Date', required=True, readonly=True, states={'draft': [('readonly', False)]})
+     
+    is_finish_level = fields.Boolean(string='Is Finish Level')
+    champion_wrestler_id = fields.Many2one('wrestler.wrestler', string='Champion Wrestler', readonly=True, states={'draft': [('readonly', False)]})
+    is_rest_round_four = fields.Boolean(string='Is Rest Round Four?')
+    is_rest_round_two = fields.Boolean(string='Is Rest Round Two?')
+    
+    @api.onchange('wrestling_id')
+    def onchange_wrestling_id(self):
+        wrestlers = []
+        if self.wrestling_id:
+            wrestlers = self.wrestling_id.wrestler_m2m_ids.ids
+        return {'domain': {'champion_wrestler_id': [('id','in',wrestlers)]}}
+    
+    @api.constrains('wrestling_id','level')
+    def _check_name(self):
+        if self.wrestling_id and self.level:
+            self._cr.execute("select count(id) from wrestling_result where wrestling_id = %s and level=%s "
+                       "and id <> %s",(self.wrestling_id.id,self.level,self.id))
+            fetched = self._cr.fetchone()
+            if fetched and fetched[0] and fetched[0] > 0:
+                raise UserError(_('The Result already exists !'))
+            
+    @api.multi
+    def action_import_wrestler(self):
+        if self.wrestling_id and self.wrestling_id.wrestler_m2m_ids: 
+            for w in self.wrestling_id.wrestler_m2m_ids:
+                not_lost = self.env['wrestling.result.history'].search([('wrestling_id','=',self.wrestling_id.id),('wrestler_id','=',w.id),('is_lost','=',False)])
+                if not_lost:
+                    line = self.env['wrestling.result.line'].create({'parent_id':self.id,
+                                                                       'wrestler_id':w.id,
+                                                                       'result_type':'won',
+                                                                       'state':'draft',
+                                                                       'wrestling_id':self.wrestling_id.id
+                                                                       })
+                
+    @api.onchange('wrestling_id','level')
+    def onchange_banzuuke(self):
+        if self.wrestling_id and self.level:
+            self.update({'name':u'%s, Даваа: %s'%(self.wrestling_id.name, self.level)})
+    
+#      ('avarga','Avarga'),
+#         ('arslan','Arslan'),
+#         ('garid','Garid'),
+#         ('zaan','Zaan'),
+#         ('other','Other')
+        
+    @api.multi
+    def compute_point(self, line, history, is_won):
+        point = 0
+        if is_won:
+            if line.rival_wrestler_rank_id.static_rank == 'avarga':
+                point += 20
+            if line.rival_wrestler_rank_id.static_rank == 'arslan':
+                point += 15
+            if line.rival_wrestler_rank_id.static_rank == 'garid':
+                point += 10
+            if line.rival_wrestler_rank_id.static_rank == 'zaan':
+                point += 5
+        else:
+            point = 0
+        return point
+    
+    @api.multi
+    def write_user_loto(self, line, point, event_registration_ids):
+        user_lotos = self.env['user.lotto'].search([('event_registration_id','in',event_registration_ids),
+                                                        ('wrestler_id','=',line.wrestler_id.id)
+                                                        ])
+        if user_lotos:
+            for loto in user_lotos:
+                index_point = point
+                if self.is_rest_round_four:
+                    index_point += 10
+                
+                if self.is_rest_round_two:
+                    index_point += 20
+                    
+                if line.result_type == 'won':
+                    index_point += loto.point_index
+                    
+                    if self.is_finish_level:
+                        if self.champion_wrestler_id:
+                            is_champion=False
+                            if line.wrestler_id.id == self.champion_wrestler_id.id:
+                                index_point += 30
+                                is_champion=True
+                            
+                if self.level == '1':
+                    loto.write({'step_1':index_point})
+                if self.level == '2':
+                    loto.write({'step_2':index_point})
+                if self.level == '3':
+                    loto.write({'step_3':index_point})
+                if self.level == '4':
+                    loto.write({'step_4':index_point})
+                if self.level == '5':
+                    if line.result_type == 'won':
+                         index_point += 5
+                    loto.write({'step_5':index_point})
+                if self.level == '6':
+                    if line.result_type == 'won':
+                        index_point += 5
+                    loto.write({'step_6':index_point})
+                if self.level == '7':
+                    if line.result_type == 'won':
+                        index_point += 5
+                    loto.write({'step_7':index_point})
+                if self.level == '8':
+                    if line.result_type == 'won':
+                        index_point += 5
+                    loto.write({'step_8':index_point})
+                if self.level == '9':
+                    if line.result_type == 'won':
+                        index_point += 5
+                    loto.write({'step_9':index_point})
+                if self.level == '10':
+                    if line.result_type == 'won':
+                        index_point += 5
+                    loto.write({'step_10':index_point})
+        return {}
+    
+    @api.multi
+    def action_confirm(self):
+        history_obj = self.env['wrestling.result.history']
+        history_line_obj = self.env['wrestling.result.history.line']
+        for line in self.line_ids:
+            won_history = history_obj.search([('wrestler_id','=',line.wrestler_id.id),('wrestling_id','=',self.wrestling_id.id)])
+            if not won_history:
+                raise UserError((u'%s, %s барилдааны үр дүн олдсонгүй!'%(line.wrestler_id.name, self.wrestling_id.name)))
+            
+            if self.champion_wrestler_id:
+                if self.champion_wrestler_id.id == line.wrestler_id.id:
+                    won_history.write({'is_champion':True})
+            
+            if self.is_rest_round_four:
+                won_history.write({'is_rest_round_four':True})
+                
+            if self.is_rest_round_two:
+                won_history.write({'is_rest_round_two':True})
+                
+            event_registration_ids=[]
+            event_registrations = self.env['event.registration'].search([('event_id', '=', self.wrestling_id.id), ('state','=','open')])
+            if event_registrations:
+                event_registration_ids = event_registrations.ids
+            
+            if not event_registration_ids:
+                raise UserError((u'Оролцогч хоосон байна!'))
+            
+            if won_history:
+                if line.result_type == 'won':
+                    point = self.compute_point(line,won_history,True)
+                    self.write_user_loto(line, point, event_registration_ids)
+                    history_line_obj.create({'parent_id':won_history.id,
+                                             'level':self.level,
+                                             'result_type':'won',
+                                             'rival_wrestler_id':line.rival_wrestler,
+                                             'rival_wrestler_rank_id':line.rival_wrestler_rank_id.id,
+                                             'tehnic':line.tehnic,
+                                             'origin_id':line.id,
+                                             'point':point
+                                             })
+                else:
+                    won_history.write({'is_lost':True})
+                    point = self.compute_point(line,won_history,False)
+                    self.write_user_loto(line, point, event_registration_ids)
+                    history_line_obj.create({'parent_id':won_history.id,
+                                             'level':self.level,
+                                             'result_type':'lost',
+                                             'rival_wrestler_id':line.rival_wrestler,
+                                             'rival_wrestler_rank_id':line.rival_wrestler_rank_id.id,
+                                             'tehnic':line.tehnic,
+                                             'origin_id':line.id,
+                                             'point':point,
+                                             })
+        self.line_ids.write({'state':'confirmed'})
+        return self.write({'state':'confirmed'})
+    
+class WrestlingResultLine(models.Model):
+    _name = 'wrestling.result.line'
+    _description = 'Wrestling Result line'
+    
+    STATE_SELECTION = [
+        ('draft','Draft'),
+        ('confirmed','Confirmed'),
+    ]
+    
+    parent_id = fields.Many2one('wrestling.result', string='Parent', ondelete='cascade')
+    wrestling_id = fields.Many2one('event.event', string='Event')
+    wrestler_id = fields.Many2one('wrestler.wrestler', 'Wrestler', required=True)
+    wrestler_rank_id = fields.Many2one(related='wrestler_id.rank_id', store=True, string='Wrestler Rank', readonly=True)
+    result_type = fields.Selection([('won','Won'),
+                                    ('lost','Lost'),
+                                    ('missed','Missed'),
+                                    ], string='Result Type', required=True)
+    tehnic = fields.Char(string='Tehnic', size=128)
+    rival_wrestler = fields.Char(string='Rival Wrestler', size=128)
+    rival_wrestler_rank_id = fields.Many2one('wrestler.rank', string='Rival Wrestler Rank')
+    state = fields.Selection(STATE_SELECTION, string='Status', required=True, default='draft')
+
+    @api.constrains('wrestler_id')
+    def _check_name(self):
+        if self.wrestler_id and self.parent_id:
+            self._cr.execute("select count(id) from wrestling_result_line where wrestler_id=%s and parent_id=%s "
+                       "and id <> %s",(self.wrestler_id.id,self.parent_id.id,self.id))
+            fetched = self._cr.fetchone()
+            if fetched and fetched[0] and fetched[0] > 0:
+                raise UserError(_('The Wrestler already exists ! [%s]'%(self.wrestler_id.name)))
+    @api.multi
+    def unlink(self):
+        for loto in self:
+            if loto.state != 'draft':
+                raise UserError(_('You can only delete draft record!'))
+        return super(WrestlingResultLine, self).unlink()
+    
+    @api.onchange('wrestling_id')
+    def onchange_wrestling_id(self):
+        wrestlers = []
+        if self.wrestling_id:
+            wrestlers = self.wrestling_id.wrestler_m2m_ids.ids
+        return {'domain':{'wrestler_id':[('id','in',wrestlers)]}}
+    
+class WrestlingResult(models.Model):
+    _inherit = 'wrestling.result'
+    line_ids = fields.One2many('wrestling.result.line', 'parent_id', string='Lines',readonly=True, states={'draft': [('readonly', False)]})
+    
+    @api.multi
+    def unlink(self):
+        for loto in self:
+            if loto.state != 'draft':
+                raise UserError(_('You can only delete draft record!'))
+        return super(WrestlingResult, self).unlink()
+    
     

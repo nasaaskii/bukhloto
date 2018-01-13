@@ -30,6 +30,15 @@ class EventEvent(models.Model):
             for wr in wrestler_ids:
                 self.env['event.wrestler'].create({"event_id":self.id, "wrestler_id":wr})
         return res
+    
+    @api.multi
+    def create_history_wrestler(self):
+        for obj in self:
+            for wrestler in obj.wrestler_ids:
+                if wrestler.wrestler_id:
+                    history = self.env['wrestling.result.history'].search([('wrestler_id', '=', wrestler.wrestler_id.id),('wrestling_id', '=', wrestler.event_id.id)])
+                    if not history:
+                        self.env['wrestling.result.history'].create({'wrestler_id':wrestler.wrestler_id.id, 'wrestling_id':wrestler.event_id.id})
 
 class UserLoto(models.Model):
     _name = 'user.lotto'
@@ -61,9 +70,19 @@ class UserLoto(models.Model):
 class EventRegistration(models.Model):
     _inherit = 'event.registration'
     _order = 'create_date desc'
-
+    
+    @api.one
+    @api.depends('user_lotto_ids', 'user_lotto_ids.total_score')
+    def _compute_score(self):
+        total_score = 0
+        for obj in self:
+            for line in obj.user_lotto_ids:
+                total_score += line.total_score
+            obj.total_score = total_score
+            
     registerno = fields.Char(string='Register No', size=10)
     user_lotto_ids = fields.One2many('user.lotto', 'event_registration_id', string='User lotto', readonly=True, states={'draft': [('readonly', False)]})
+    total_score = fields.Integer(string='Total Score',store=True, readonly=True, compute='_compute_score')
     
     @api.model
     def _prepare_attendee_values(self, registration):
